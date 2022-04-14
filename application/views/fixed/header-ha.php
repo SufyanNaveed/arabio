@@ -559,9 +559,10 @@
                                         src="<?php echo base_url('userfiles/employee/thumbnail/' . $this->aauth->get_user()->picture) ?>"
                                         alt="avatar"><i></i></span><span
                                     class="user-name"><?php echo $this->lang->line('Account') ?></span></a>
-                        <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item"
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <!-- <a class="dropdown-item"
                                                                           href="<?php echo base_url(); ?>user/profile"><i
-                                        class="ft-user"></i> <?php echo $this->lang->line('Profile') ?></a>
+                                        class="ft-user"></i> <?php echo $this->lang->line('Profile') ?></a> -->
                             <!-- <a href="<?php echo base_url(); ?>user/attendance"
                                class="dropdown-item"><i
                                         class="fa fa-list-ol"></i><?php echo $this->lang->line('Attendance') ?></a>
@@ -569,7 +570,7 @@
                                class="dropdown-item"><i
                                         class="fa fa-hotel"></i><?php echo $this->lang->line('Holidays') ?></a> -->
 
-                            <div class="dropdown-divider"></div>
+                            <!-- <div class="dropdown-divider"></div> -->
                             <a class="dropdown-item" href="<?php echo base_url('user/logout'); ?>"><i
                                         class="ft-power"></i> <?php echo $this->lang->line('Logout') ?></a>
                         </div>
