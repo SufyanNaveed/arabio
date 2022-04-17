@@ -45,6 +45,15 @@ class Complaints_model extends CI_Model
         $query = $this->db->get();
         return $query->result_array();
     }
+    
+    public function complaints_details($id)
+    {
+        $this->db->select('*');
+        $this->db->from('complaints'); 
+        $this->db->where('id', $id); 
+        $query = $this->db->get();
+        return $query->row_array();
+    }
 
     public function add_complaints($data)
     {

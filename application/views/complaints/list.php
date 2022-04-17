@@ -42,6 +42,7 @@
                         <th><?php echo 'Phone' ?></th>
                         <th><?php echo 'Email' ?></th>
                         <th><?php echo 'Position' ?></th>
+                        <th><?php echo 'Action' ?></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -56,6 +57,7 @@
                             <td><?php echo $row['primary_phone']; ?></td>
                             <td><?php echo $row['email_address']; ?></td>
                             <td><?php echo $row['sap_position']; ?></td>
+                            <td><a class="btn btn-primary  btn-sm" href="<?php echo base_url('complaints/printTicket/'.$row['id']) ?>" target="_blank"> <span class="fa fa-print"></span> Print</a></td>
                         </tr>
                     <?php $i++; } ?>
                     </tbody>
@@ -70,6 +72,7 @@
                         <th><?php echo 'Phone' ?></th>
                         <th><?php echo 'Email' ?></th>
                         <th><?php echo 'Position' ?></th>
+                        <th><?php echo 'Action' ?></th>
                     </tr>
                     </tfoot>
                 </table>

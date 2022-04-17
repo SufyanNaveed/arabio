@@ -1,3 +1,4 @@
+
 <link rel="stylesheet" type="text/css"
       href="<?= assets_url() ?>app-assets/<?= LTR ?>/core/menu/menu-types/horizontal-menu.css">
 </head>
@@ -16,7 +17,7 @@
                                 class="ft-menu font-large-1"></i></a></li>
                 <li class="nav-item"><a class="navbar-brand" href="<?= base_url() ?>dashboard/"><img
                                 class="brand-logo" alt="logo"
-                                src="<?php echo base_url(); ?>userfiles/theme/logo-header.png">
+                                src="<?php echo base_url(); ?>userfiles/company/logo-white.png">
                     </a></li>
                 <li class="nav-item d-md-none"><a class="nav-link open-navbar-container" data-toggle="collapse"
                                                   data-target="#navbar-mobile"><i class="fa fa-ellipsis-v"></i></a></li>
@@ -51,16 +52,17 @@
                                                                         title="Access POS"><i
                                     class="icon-handbag"></i><?php echo $this->lang->line('POS') ?> </a>
                     </li> -->
-                    <li class="nav-item nav-search"><a class="nav-link nav-link-search" href="#" aria-haspopup="true"
+                    <li class="nav-item nav-search">
+                        <!-- <a class="nav-link nav-link-search" href="#" aria-haspopup="true"
                                                        aria-expanded="false" id="search-input"><i
                                     class="ficon ft-search"></i></a>
                         <div class="search-input">
                             <input class="input" type="text"
                                    placeholder="<?php echo $this->lang->line('Search Customer') ?>"
                                    id="head-customerbox">
-                        </div>
-                        <div id="head-customerbox-result" class="dropdown-menu ml-5"
-                             aria-labelledby="search-input"></div>
+                        </div> -->
+                        <!-- <div id="head-customerbox-result" class="dropdown-menu ml-5"
+                             aria-labelledby="search-input"></div> -->
                     </li>
                 </ul>
 
@@ -558,7 +560,7 @@
                                     class="avatar avatar-online"><img
                                         src="<?php echo base_url('userfiles/employee/thumbnail/' . $this->aauth->get_user()->picture) ?>"
                                         alt="avatar"><i></i></span><span
-                                    class="user-name"><?php echo $this->lang->line('Account') ?></span></a>
+                                    class="user-name"><?php echo $this->aauth->get_user()->username ?></span></a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <!-- <a class="dropdown-item"
                                                                           href="<?php echo base_url(); ?>user/profile"><i
@@ -595,7 +597,7 @@
 
             </li>
             <li class="nav-item"><a class="nav-link" href="<?= base_url(); ?>complaints/"><i
-                            class="icon-speedometer"></i><span><?= 'Complaints' ?></span></a>
+                            class="icon-speedometer"></i><span><?= 'Tickets' ?></span></a>
 
             </li>
             <!-- <?php

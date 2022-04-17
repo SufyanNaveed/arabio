@@ -12,14 +12,12 @@
                         <div class="card border-grey border-lighten-3 px-1 py-1 m-0">
                             <div class="card-header border-0">
                                 <div class="card-title text-center">
-                                    <!-- <img class=" mt-1"
-                                         src="<?php echo base_url('userfiles/company/') . $this->config->item('logo'); ?>"
-                                         alt="logo" style="max-height: 10rem;"> -->
-                                    <h1><b>Arabio</b></h1>
+                                    <!-- <img class=" mt-1" src="<?php echo base_url('userfiles/company/') . $this->config->item('logo'); ?>" alt="logo" style="max-height: 10rem;"> -->
+                                    <img class=" mt-1" src="<?php echo base_url('userfiles/company/logo-light.png') ?>" alt="logo" style="max-height: 10rem;">
                                 </div>
                                 <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2">
                                     <!-- <span><?php echo $this->lang->line('employee_login_panel') ?></span> -->
-                                    <span>Welcome to Arabio</span>
+                                    <span>Welcome to Employee Support Portal</span>
                                 </h6>
                             </div>
                             <!--<div class="card-body">

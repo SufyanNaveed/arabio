@@ -47,7 +47,7 @@
 
     });
 
-    // $('.alert').hide();
+    $('div.alert:first').hide();
 </script> 
 
 

@@ -11,7 +11,7 @@
     }
     ?>
     <link rel="apple-touch-icon" href="<?= assets_url() ?>app-assets/images/ico/apple-icon-120.png">
-    <link rel="shortcut icon" type="image/x-icon" href="<?= assets_url() ?>app-assets/images/ico/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= assets_url() ?>app-assets/images/ico/faviconA.ico">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i%7COpen+Sans:300,300i,400,400i,600,600i,700,700i"
           rel="stylesheet">
     <!-- BEGIN VENDOR CSS-->
@@ -60,6 +60,11 @@
     <script src="<?php echo assets_url(); ?>assets/portjs/accounting.min.js" type="text/javascript"></script>
     <?php accounting() ?>
 </head>
+<style>
+    .pace-done > div.alert::first-child{
+        display:none !important;
+    }
+</style>
 <?php
 if (MENU) {
     include_once('header-va.php');

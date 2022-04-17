@@ -859,10 +859,10 @@ $lang['Customer_approved'] = " Customer approved";
 
 ////fresh
 
-$lang['today_invoices'] = "Today Invoices";
-$lang['this_month_invoices'] = "This Month Invoices";
-$lang['today_sales'] = "Today Sales";
-$lang['this_month_sales'] = "This Month Sales";
+$lang['today_invoices'] = "Today's Tickets Count";
+$lang['this_month_invoices'] = "This Month Tickets Count";
+$lang['today_sales'] = "Total Resolved Tickets Count";
+$lang['this_month_sales'] = "This Month Resolved Tickets";
 $lang['today_income'] = "Today Income";
 $lang['today_expenses'] = "Today Expenses";
 $lang['today_profit'] = "Today Profit";

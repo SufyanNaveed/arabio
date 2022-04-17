@@ -17,6 +17,25 @@
  */
 
 defined('BASEPATH') or exit('No direct script access allowed');
+require_once APPPATH . 'third_party/vendor/autoload.php';
+require_once APPPATH . 'third_party/qrcode/vendor/autoload.php';
+
+use Mike42\Escpos\Printer;
+use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
+use Mike42\Escpos\PrintConnectors\FilePrintConnector;
+use Mike42\Escpos\PrintConnectors\NetworkPrintConnector;
+use Mike42\Escpos\PrintConnectors\DummyPrintConnector;
+use Mike42\Escpos\EscposImage;
+
+use Omnipay\Omnipay;
+use Endroid\QrCode\QrCode;
+
+use Salla\ZATCA\GenerateQrCode;
+use Salla\ZATCA\Tags\InvoiceDate;
+use Salla\ZATCA\Tags\InvoiceTaxAmount;
+use Salla\ZATCA\Tags\InvoiceTotalAmount;
+use Salla\ZATCA\Tags\Seller;
+use Salla\ZATCA\Tags\TaxNumber;
 
 class Complaints extends CI_Controller
 {
@@ -34,7 +53,6 @@ class Complaints extends CI_Controller
 
         }
         $this->li_a = 'emp';
-
     }
 
     public function index()
@@ -50,16 +68,12 @@ class Complaints extends CI_Controller
     
     public function add()
     {
-
         $head['usernm'] = $this->aauth->get_user()->username;
         $head['title'] = 'Add Complaint';
         $data['dept'] = $this->complaints->department_list(0);
-
         $this->load->view('fixed/header', $head);
         $this->load->view('complaints/add', $data);
         $this->load->view('fixed/footer');
-
-
     }
 
     public function submit_user()
@@ -75,7 +89,7 @@ class Complaints extends CI_Controller
             'primary_phone' => $this->input->post('primary_phone', true),
             'email_address' => $this->input->post('email_address', true),
             'sap_position' => $this->input->post('sap_position', true),
-            'system_access' => implode(',',$this->input->post('system_access', true)),
+            'system_access' => count($this->input->post('system_access', true)) > 0 ? implode(',',$this->input->post('system_access', true)) : '',
             'SAP_role' => $this->input->post('SAP_role', true),
             'serialization_role' => $this->input->post('serialization_role', true),
             'shared_role' => $this->input->post('shared_role', true),
@@ -83,11 +97,11 @@ class Complaints extends CI_Controller
             'microsoft_role' => $this->input->post('microsoft_role', true),
             'fortinet_role' => $this->input->post('fortinet_role', true),
             'other_role' => $this->input->post('other_role', true),
-            'microsoft_365' => implode(',',$this->input->post('microsoft_365', true)),
+            'microsoft_365' => count($this->input->post('microsoft_365', true)) > 0 ? implode(',',$this->input->post('microsoft_365', true)) : '',
             'justification' => $this->input->post('justification', true),
-            'machine' => implode(',',$this->input->post('machine', true)),
+            'machine' => count($this->input->post('machine', true)) > 0 ? implode(',',$this->input->post('machine', true)) : '',
             'machine_comment' => $this->input->post('machine_comment', true),
-            'accessories' => implode(',',$this->input->post('accessories', true)),
+            'accessories' => count($this->input->post('accessories', true)) > 0 ? implode(',',$this->input->post('accessories', true)) : '',
             'accessories_comment' => $this->input->post('accessories_comment', true),
             'wireless_mouse' => $this->input->post('wireless_mouse', true),
             'wireless_mouse_comment' => $this->input->post('wireless_mouse_comment', true),
@@ -111,6 +125,23 @@ class Complaints extends CI_Controller
         } else {
             $this->session->set_flashdata('messagePr', 'There has been an error, please try again.');
             redirect(base_url() . 'complaints/add', 'refresh'); 
+        }
+    }
+
+    public function printTicket($tid)
+    { 
+        $data['ticket'] = $this->complaints->complaints_details($tid);        
+        // echo '<pre>'; print_r($data['ticket']);exit;
+        ini_set('memory_limit', '64M');
+        $html = $this->load->view('print_files/print_ticket', $data, true);
+        $this->load->library('pdf');
+        $pdf = $this->pdf->load_split(array('margin_top' => 5));
+        $pdf->WriteHTML($html);
+        //echo $html; exit;
+        if ($this->input->get('d')) {
+            $pdf->Output('Ticket #' . $tid . '.pdf', 'D');
+        } else {
+            $pdf->Output('Ticket #' . $tid . '.pdf', 'I');
         }
     }
 
